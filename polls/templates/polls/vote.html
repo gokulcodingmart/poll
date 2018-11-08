@@ -1,0 +1,24 @@
+{% extends "base1.html" %}
+{% block content %}
+    <h1> Welcome Vote</h1><br>
+    <h1>{{title}}</h1>
+   
+    
+
+        <div class="card1">
+            <!-- <p> {{c.option }}</p> -->
+            <form method="Post" action="/polls/vote/{{ id }}/">{% csrf_token%}
+                {% for c in choice %}
+                    <input type="radio" name="option" value="{{c.id}}">{{c.option }}<br>
+                {% endfor %}
+                <input type="submit" value="Vote" class="bt">       
+            </form>
+            
+        </div>
+    
+    
+  
+
+{% endblock %}
+
+

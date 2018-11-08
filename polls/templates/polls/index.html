@@ -1,11 +1,30 @@
-<h1> Welcome</h1>
-{% for p in poll %}
-    {% if p.user.id == request.user.id %}
+{% extends "base1.html" %}
+{% block content %}
+    <h1> Welcome</h1>
 
-    <div class="card1">
-    
-        <h4>{{p.title}}</h4>
-     
-    </div>
-    {% endif %}
-{% endfor %}
+  
+    {% for p in poll %}
+        {% if p.user.id == request.user.id %}
+
+        <div class="card1">
+            <a href="/polls/vote/{{p.id}}/"> {{p.title}} </a><br>
+           
+        
+        </div>
+        {% endif %}
+    {% endfor %}
+
+
+
+    <h3> Create Poll</h3>
+
+    <form method="Post" action="/polls/index/">{% csrf_token%}
+        <input type="text" name="title" placeholder="title" class="polltitle"><br>
+        <textarea name="option" placeholder="option" class="option"></textarea><br>
+        <em>enter options seperated by comma</em><br>
+        <input type="submit" value="Post" class="bt">       
+    </form>
+
+{% endblock %}
+
+
