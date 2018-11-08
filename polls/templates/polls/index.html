@@ -1,1 +1,11 @@
 <h1> Welcome</h1>
+{% for p in poll %}
+    {% if p.user.id == request.user.id %}
+
+    <div class="card1">
+    
+        <h4>{{p.title}}</h4>
+     
+    </div>
+    {% endif %}
+{% endfor %}

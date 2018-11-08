@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from .models import Polllist
 
 # Create your views here.
 def index(request):	
-	return render(request, 'polls/index.html')
+    polls = Polllist.objects.all()
+
+    return render(request, 'polls/index.html',{'poll':polls})
