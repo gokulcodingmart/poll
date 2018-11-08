@@ -1,6 +1,13 @@
 {% extends "base1.html" %}
 {% block content %}
     <h1> Welcome details</h1>
+    {% for r in report %}
+       
+           
+           <h3>{{r.option.option}} 
+           {{r.email}}</h3>
+       
+    {% endfor %}
 
 
 {% endblock %}

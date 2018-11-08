@@ -15,4 +15,4 @@ class Choice(models.Model):
     
 class Vote(models.Model):	
 	email = models.CharField(null=True, max_length=100)
-	option = models.ManyToManyField(Choice)
+	option = models.ForeignKey(Choice, on_delete=models.CASCADE, null=True)

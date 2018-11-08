@@ -7,7 +7,7 @@
         {% if p.user.id == request.user.id %}
 
         <div class="card1">
-            <a href="/polls/vote/{{p.id}}/"> {{p.title}} </a><br>
+           <span>{{p.title}}</span> <a href="/polls/vote/{{p.id}}/"> Vote </a><a href="/polls/details/{{p.id}}/"> Report </a><br>
            
         
         </div>

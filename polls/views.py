@@ -27,6 +27,11 @@ def about(request):
     return render(request, 'polls/about.html')
 
 
+def details(request,id):	
+    
+    report = Vote.objects.filter(option__poll__id=id)
+    return render(request, 'polls/details.html', {'report':report})
+
 
 def contact(request):	
     
@@ -34,19 +39,29 @@ def contact(request):
     return render(request, 'polls/contact.html')
 
 
-def vote(request,id):	
+def vote(request,id):
+    alert = "a"	
     if request.method == "POST":
-    
+       
         select  = request.POST.get('option')
-        print(select)
+        votermail  = request.POST.get('votermail')
+        
         optionobject = Choice.objects.get(pk=select)
-        print(optionobject)
-        optionobject.votes = optionobject.votes +1
-        optionobject.save(update_fields=["votes"]) 
+        poll = optionobject.poll.id
+
+        match = Vote.objects.filter(option__poll__id=id, email = votermail)
+        print(match)
+        if not match:
+            optionobject.votes = optionobject.votes +1
+            optionobject.save(update_fields=["votes"]) 
+            vote = Vote.objects.create(email=votermail, option=optionobject)
+        else:
+            alert = "You have already voted"   
+
         
 
-
+    
     choice = Choice.objects.filter(poll_id=id)
     poll = Polllist.objects.filter(id=id)
     title = poll[0].title
-    return render(request, 'polls/vote.html', {'choice':choice, 'id':id, 'title':title})
+    return render(request, 'polls/vote.html', {'choice':choice, 'id':id, 'title':title, 'alert':alert})
