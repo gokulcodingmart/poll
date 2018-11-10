@@ -1,0 +1,32 @@
+{% extends "base1.html" %}
+{% block content %}
+    <div class="vot">
+        <h1> Welcome to vote</h1>
+        <div class="container pollca">
+
+                <div class="row ">
+                    {% for p in poll %}
+                        <div class="col-sm-4">
+                                <div class="w3-card-4 cardview">
+        
+                                    <div class="w3-container w3-center">
+                                        <h1>{{p.title}}</h1>
+                                        
+                                    </div>
+                                    
+                                        <div class="w3-section but">
+                                            <button class="w3-button w3-green share" onclick="location.href='https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/polls/vote/{{id}}'">Share</button>
+                                            <button class="w3-button  w3-red report" onclick="location.href='/polls/vote/{{p.id}}/'">Vote</button>
+                                        </div>
+                                   
+                                        
+                                </div> 
+                        
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

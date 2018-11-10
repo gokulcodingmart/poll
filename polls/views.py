@@ -116,3 +116,10 @@ def create(request):
 
 
     return render(request, 'polls/create.html')
+
+
+
+def tovote(request):	
+    
+    polls = Polllist.objects.exclude(user_id= request.user.id)
+    return render(request, 'polls/tovote.html', {'poll':polls})

@@ -9,7 +9,7 @@ urlpatterns = [
 	url(r'^details/(?P<id>\d+)/$', views.details, name='details' ),
 	url(r'^create/$', views.create, name='create' ),
 	url(r'^vote/(?P<id>\d+)/$', views.vote, name='vote' ),
-	# url(r'^ajaxcomment/$', views.ajaxcomment, name='ajaxcomment' ),
+	url(r'^tovote/$', views.tovote, name='tovote' ),
 	# url(r'^like/$', views.like, name='like' ),
 
 
