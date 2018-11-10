@@ -1,0 +1,17 @@
+{% extends "base1.html" %}
+{% block content %}
+    <h1> Welcome create</h1>
+    <h3> Create Poll</h3>
+
+    <form method="Post" action="/polls/index/">{% csrf_token%}
+        <div class="form-group">
+           
+            <input type="text" name="title" placeholder="title" class="polltitle"><br>
+          </div>
+        
+        <textarea name="option" placeholder="option" class="option"></textarea><br>
+        <em>enter options seperated by comma</em><br>
+        <input type="submit" value="Post" class="bt">       
+    </form>
+
+{% endblock %}

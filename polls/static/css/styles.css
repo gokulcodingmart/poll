@@ -1,0 +1,64 @@
+.bodycont{
+    padding-left: 0;
+    margin-left: 0;
+    width: 1000px !important;
+}
+.cardview{
+    background-color: #1565C0;
+    color: white;
+}
+.votes{
+    font-size: 64px;
+}
+/* .share{
+    margin-right: 200px;
+} */
+.share{
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+.report{
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+#chart{
+    width: 350px;
+    height: 250px;
+}
+.bar{
+    width: 370px;
+    height: 290px;
+    padding-top: 30px;
+    margin-left: 100px;
+}
+.pie{
+    width: 370px;
+    height: 290px;
+    padding-top: 30px;
+}
+.pollhead{
+    background-color: #F5F5F5;
+    margin-right: 40px;
+    padding: 7px;
+    margin-top: 10px;
+}
+#pie{
+    width: 350px;
+    height: 250px;
+}
+.rep{
+    margin-top: 70px;
+    margin-left: 180px;
+    width: 700px;
+    height: 120px;
+}
+.max{
+    color: #D4AF37;
+}
+.descrip{
+    font-size: 20px;
+}
+.pollcard{
+    margin-left: 120px;
+    width: 900px !important;
+}

@@ -5,18 +5,21 @@
   {% load static %}
   <title>Django</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="/static/js/c3.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
   <script src="//platform-api.sharethis.com/js/sharethis.js#property=5bcffb96e0bd050011105875&product=inline-share-buttons"></script>
   <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5bcffb96e0bd050011105875&product=custom-share-buttons"></script>
 </head>
 <body>
 
-	 <nav class="navbar">
+	 <nav class="navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="/">Pollworld</a>
@@ -40,12 +43,32 @@
 	  </div>
 	</nav> 
 
-	{% block banner %} {% endblock %}
-  <h1>{% block head %}{% endblock %}</h1>
-      {% block content %}{% endblock %}
+	<div class="container bodycont">
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="w3-sidebar w3-bar-block w3-black" style="width:17%">
+					<a href="#" class="w3-bar-item w3-button"></a>
+					<a href="#" class="w3-bar-item w3-button"></a>
+					<a href="/" class="w3-bar-item w3-button">My Poll</a>
+					<a href="/polls/create/" class="w3-bar-item w3-button ">Create Poll</a>
+					<a href="#" class="w3-bar-item w3-button ">Poll to vote</a>
+					
+				</div>
+			
+			</div>
+			<div class="col-sm-10">
+				{% block banner %} {% endblock %}
+					{% block head %}{% endblock %}
+							{% block content %}{% endblock %}
+					
+				</div>
+				{% block javascript %}{% endblock %}
+			</div>
+		
+		</div>
+	</div>
+
 	
-</div>
-{% block javascript %}{% endblock %}
 </body>
 </html>
 
