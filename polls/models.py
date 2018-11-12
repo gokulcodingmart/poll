@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Polllist(models.Model):	
 	title = models.TextField()
+	question = models.TextField(null=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

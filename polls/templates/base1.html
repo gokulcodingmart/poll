@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	 <nav class="navbar-inverse">
+	 <nav class="navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="/">Pollworld</a>
@@ -47,12 +47,19 @@
 		<div class="row">
 			<div class="col-sm-2">
 				<div class="w3-sidebar w3-bar-block w3-black" style="width:17%">
+					<br>
+<br>
+
 					<a href="#" class="w3-bar-item w3-button"></a>
 					<a href="#" class="w3-bar-item w3-button"></a>
-					<a href="/" class="w3-bar-item w3-button">My Poll</a>
-					<a href="/polls/create/" class="w3-bar-item w3-button ">Create Poll</a>
-					<a href="/polls/tovote/" class="w3-bar-item w3-button ">Poll to vote</a>
-					
+					{% if request.user.id %}
+						<a href="/" class="w3-bar-item w3-button">My Poll</a>
+						<a href="/polls/create/" class="w3-bar-item w3-button ">Create Poll</a>
+						<a href="/polls/tovote/" class="w3-bar-item w3-button ">Polls to vote</a>
+					{% else %}
+						<a href="/accounts/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+					{% endif %}
+
 				</div>
 			
 			</div>

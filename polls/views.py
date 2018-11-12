@@ -24,15 +24,18 @@ def index(request):
         if request.POST.get('title'):
             title  = request.POST.get('title')
             option  = request.POST.get('option')
+            question  = request.POST.get('question')
             optionlist = option.split(',')
             user = request.user
-            poll = Polllist.objects.create(title=title, user=user)
+            poll = Polllist.objects.create(title=title, question=question, user=user)
 
             for p in optionlist:
                 Choice.objects.create(poll=poll, option=p)
 
-
-    polls = Polllist.objects.filter(user_id= request.user.id)
+    if request.user.id:
+        polls = Polllist.objects.filter(user_id= request.user.id)
+    else:
+        polls = Polllist.objects.all()
     
     for p in polls:
         
@@ -96,7 +99,8 @@ def vote(request,id):
     choice = Choice.objects.filter(poll_id=id)
     poll = Polllist.objects.filter(id=id)
     title = poll[0].title
-    return render(request, 'polls/vote.html', {'choice':choice, 'id':id, 'title':title, 'alert':alert})
+    question = poll[0].question
+    return render(request, 'polls/vote.html', {'choice':choice, 'id':id, 'question':question, 'title':title, 'alert':alert})
 
 
 
@@ -106,9 +110,10 @@ def create(request):
         if request.POST.get('title'):
             title  = request.POST.get('title')
             option  = request.POST.get('option')
+            question  = request.POST.get('question')
             optionlist = option.split(',')
             user = request.user
-            poll = Polllist.objects.create(title=title, user=user)
+            poll = Polllist.objects.create(title=title, question=question, user=user)
 
             for p in optionlist:
                 Choice.objects.create(poll=poll, option=p)

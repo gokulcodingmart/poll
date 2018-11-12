@@ -1,24 +1,28 @@
 {% extends "base1.html" %}
 {% block content %}
-    <h2 class="pollhead"> {{ poll.title }}</h2>
-    <br>
-    <div class="row">
-        <div class="container col-sm-6">
-            <div class="w3-card bar">
-                <div id="chart"></div>
-            </div>
-        </div>
-        <div class="container col-sm-6">
-                <div class="w3-card pie">
-                    <div id="pie"></div>
+    {% if max.votes > 0%}
+        <h2 class="pollhead"> {{ poll.title }}</h2>
+        <br>
+        <div class="row">
+            <div class="container col-sm-6">
+                <div class="w3-card bar">
+                    <div id="chart"></div>
                 </div>
             </div>
-    </div>
-    <div class="rep container w3-card">
-        <h2 class ="max" align="center">{{max.option}}</h2>
-        <p class="descrip" align="center">Is leading the poll till now. This details is gathered by diversed people. </p>
+            <div class="container col-sm-6">
+                    <div class="w3-card pie">
+                        <div id="pie"></div>
+                    </div>
+                </div>
+        </div>
+        <div class="rep container w3-card">
+            <h2 class ="max" align="center">{{max.option}}</h2>
+            <p class="descrip" align="center">Is leading the poll till now. This details is gathered by diversed people. </p>
 
-    </div>
+        </div>
+    {% else %}
+        <h1 align="center" class="nocontent">No one has voted yet.</h1>
+    {% endif%}
     <!-- {% for r in report %}
        
            

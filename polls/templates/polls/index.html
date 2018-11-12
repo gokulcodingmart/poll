@@ -26,16 +26,19 @@
 
 <br>
 <br>
+<br>
+<br>
+
 
     <div class="container pollcard">
 
 		<div class="row ">
             {% for p in poll %}
-                <div class="col-sm-4    ">
+                <div class="col-sm-3    ">
                         <div class="w3-card-4 cardview">
 
                             <div class="w3-container w3-center">
-                                <h1>{{p.title}}</h1>
+                                <h2>{{p.title}}</h2>
                                 {% for key,value in votes.items %}
                                     {% if key == p.id %}
                                     <span class="w3-circle" >
@@ -47,8 +50,14 @@
                             </div>
                             
                                 <div class="w3-section but">
+                                   
+
                                     <button class="w3-button w3-green share" onclick="location.href='https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/polls/vote/{{id}}'">Share</button>
-                                    <button class="w3-button  w3-red report" onclick="location.href='/polls/details/{{p.id}}/'">Report</button>
+                                    {% if request.user.id %}
+                                        <button class="w3-button  w3-red report" onclick="location.href='/polls/details/{{p.id}}/'">Report</button>
+                                    {% else %}
+                                        <button class="w3-button  w3-red report" onclick="location.href='/polls/vote/{{p.id}}/'">Vote</button>
+                                    {% endif %}
                                 </div>
                            
                                 
@@ -79,7 +88,7 @@
         <em>enter options seperated by comma</em><br>
         <input type="submit" value="Post" class="bt">       
     </form> -->
-
+ 
 {% endblock %}
 {% block javascript %}
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script>

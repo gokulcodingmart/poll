@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'polls',
     
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -144,3 +146,4 @@ STATIC_URL = '/static/'
 # ]
 
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True

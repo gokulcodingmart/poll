@@ -1,17 +1,30 @@
 {% extends "base1.html" %}
 {% block content %}
-    <h1> Welcome create</h1>
-    <h3> Create Poll</h3>
+    <div class="vot1" background="/static/image/create.jpg">
+        <br>
+        <br>
+        <br>
+        <div class="w3-card-4 create w3-round-large">
+            <h2 align="center" class="createhead"> Create Poll</h2>
+            
+            <form method="Post" action="/polls/index/">{% csrf_token%}
+                <div class="form-group">
+                
+                    <input type="text" name="title" placeholder="Title" class="polltitle form-control"><br>
+                    <input type="text" name="question" placeholder="Question" class="polltitle form-control"><br>
+                
+                    <!-- <input type="text" name="tags" id="aa" class="form-control" value="" data-role="tagsinput" /> -->
+                <textarea name="option" placeholder="Option, enter options seperated by comma" class="option form-control"></textarea><br>
+                
+                <input type="submit" value="Create" class="btn-primary form-control createform">  
+            </div>     
+            </form>
+        </div>
+    </div>
 
-    <form method="Post" action="/polls/index/">{% csrf_token%}
-        <div class="form-group">
-           
-            <input type="text" name="title" placeholder="title" class="polltitle"><br>
-          </div>
-        
-        <textarea name="option" placeholder="option" class="option"></textarea><br>
-        <em>enter options seperated by comma</em><br>
-        <input type="submit" value="Post" class="bt">       
-    </form>
-
+    <script>
+          $("input[name='tags']").tagsinput({
+                confirmKeys:[13] //-- Only enter                                                                                   
+            });
+    </script>
 {% endblock %}
