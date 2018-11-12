@@ -1,0 +1,39 @@
+{% extends "base1.html" %}
+{% block content %}
+<div class="vot">
+        <br>
+        <br>
+        
+        <!-- <h1>{{title}}</h1>
+        <h3>{{question}}</h3> -->
+        <h3>{{alert}}</h3>
+   
+    
+
+        <div class="w3-card-4 create w3-round-large">
+                <h1 align="center">{{title}}</h1>
+            <!-- <p> {{c.option }}</p> -->
+            <form method="Post" action="/polls/vote/{{ id }}/">{% csrf_token%}
+                <div class="form-group">
+                    <input type="email" name="votermail" placeholder="Email" class="form-control email"><br>
+                    <h3>{{question}}</h3>
+                    {% for c in choice %}
+                    <span class="radio"><input type="radio" name="option" value="{{c.id}}" class="w3-radio"> &nbsp {{c.option }} </span>
+                    {% endfor %}
+                    <input type="submit" value="Vote" class="btv btn btn-success">
+                    <a class="btn btn-danger bts" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/polls/vote/{{id}}">
+                        Share
+                        </a>
+                </div>       
+            </form>
+            <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/polls/vote/{{id}}">
+                Share
+                </a> -->
+            
+        </div>
+  </div>  
+  
+
+{% endblock %}
+
+

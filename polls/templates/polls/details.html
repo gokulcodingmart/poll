@@ -1,0 +1,82 @@
+{% extends "base1.html" %}
+{% block content %}
+    {% if max.votes > 0%}
+        <h2 class="pollhead"> {{ poll.title }}</h2>
+        <br>
+        <div class="row">
+            <div class="container col-sm-6">
+                <div class="w3-card bar">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            <div class="container col-sm-6">
+                    <div class="w3-card pie">
+                        <div id="pie"></div>
+                    </div>
+                </div>
+        </div>
+        <div class="rep container w3-card">
+            <h2 class ="max" align="center">{{max.option}}</h2>
+            <p class="descrip" align="center">Is leading the poll till now. This details is gathered by diversed people. </p>
+
+        </div>
+    {% else %}
+        <h1 align="center" class="nocontent">No one has voted yet.</h1>
+    {% endif%}
+    <!-- {% for r in report %}
+       
+           
+           <h3>{{r.option.option}} 
+           {{r.email}}</h3>
+       
+    {% endfor %} -->
+
+
+{% endblock %}
+{% block javascript %}
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script>
+        var traildata = {{ charttrail|safe }};
+        var label = {{ label|safe }};
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                x : 'x',
+                rows: [
+                    label,
+                    traildata
+                ],
+                type: 'bar'
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    
+                }
+            }
+            
+        });
+        var pie = c3.generate({
+            bindto: '#pie',
+            data: {
+                x : 'x',
+                rows: [
+                    label,
+                    traildata
+                ],
+                type: 'pie'
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    
+                }
+            }
+            
+        });
+
+    </script>
+{% endblock %}
+
+
